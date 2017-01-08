@@ -1,0 +1,60 @@
+coloredTiles/{BlackTile.png,GreyTile.png,RedTile.png}: jeweils ein
+Viereck in der farbe, mit transparentem Rand.
+
+empty.png: ein leeres tile
+
+notFound.png: ein Pink karierter Platzhalter (halbtransparent)
+
+Entities/bigbox.png: Eine metallische Kiste
+
+Entities/smallbox.png: Eine Holzkiste
+
+Entities/statueprototype.png: Der Sockel für mehrere Statuen.
+
+Entities/statueblueball.png: Eine gehörnte Statue auf dem
+prototype-Sockel mit einem blau-alphatransparenten runden Dingsbums.
+
+Entities/statuefire.png: Eine Statue(?) auf dem prototype-Sockel aus
+der Feuer kommt.
+
+Floor/doorclosed.png: Eine Bodenplatte mit Löchern aus denen Feuer
+kommt.
+
+Floor/dooropen.png: Eine Bodenplatte mit Löchern aus denen kein Feuer
+kommt, wohl das Dual zu Floor/doorclosed.png
+
+Floor/exit.png: Ein Portal auf einer grauen Bodenplatte.
+
+Floor/floor.png: Eine graue Bodenplatte
+
+Floor/platedefault.png: Eine graue Bodenplatte mit einem runden
+brüchigen Dingsbums darauf.
+
+Floor/platelocked.png: Eine graue Bodenplatte mit einem runden
+brüchigen Dingsbums darauf, das runtergedrückt ist, dual zu
+Floor/platedefault.png.
+
+Floor/platepressed.png: Eine graue Bodenplatte mit einer runden
+brüchigen Vertiefung, dual zu Floor/platedefault.png.
+
+Floor/Portal{1,2,3}.png: Portale in verschiedenen Farben.
+
+Old/Stonetile.png: Eine Cobblestone(?)-Bodenplatte.
+
+Old/TileTileBlue.png: Eine Kachel für eine
+oktagonal-hexagonal-Pflasterung in blau.
+
+Old/TileTileBlue2.png: Eine Kachel für eine
+oktagonal-hexagonal-Pflasterung in blau mit gelben Kratzern.
+
+Old/FLIESSE: Hässliche vierecksgrafiken (ich glaub nicht dass wir die
+noch verwenden, die scheinen zum Test zu sein).
+
+Old/GRAS: Noch mehr hässliche vierecksgrafiken von denen ich glaube
+dass wir sie nicht mehr benutzen.
+
+Player/player{1,2}.png: Spieler in verschiedenen Richtungen und
+unterschiedlichen Mützenfarben.
+
+Wall/*: Die verschiedenen Amalgamierungen von Wänden, allerdings mit
+konstantem Hintergrund, nämlich der grauen Kachel.

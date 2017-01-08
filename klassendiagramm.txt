@@ -1,0 +1,110 @@
+Tiles:
+- Floor
+- Wall
+
+
+Eine Übersicht über die Klassen:
+
+
+***** Position *****
+Für Koordinaten
+Attribute x, y 
+
+***** Tile *****
+Diese Klasse verwaltet eine Kachel 
+Attribute:
+	world: World - Referenz auf die Welt
+	position: Position
+	type: String 
+	entities: Liste von Dingen die auf diesem Tile stehen
+Methoden:
+	function update()
+	function neighbour(direction) -> Tile
+		Nachbar in Richtung direction
+	function moveFrom(dir) prüft, ob man sich von da drauf darf
+
+***** Entity *****
+Diese Klasse verwaltet ein interaktives Objekt in der Spielwelt
+Also Dinge die beweglich sind oder mit dem Spieler interagieren.
+Attribute:
+	world: World - Referenz auf die Welt
+	position: Position 
+	type: String
+	actionList: Array von String
+		Liste der möglichen Aktionsnamen, die diese Entity anbietet.
+	function doAction(action)
+		Führt eine bestimmte Aktion mit dem Objekt durch
+Methoden:
+	function update()
+
+***** BinaryLever *****
+Beispiel für einen einfachen binären Hebel.
+
+Ergänzt: Entity
+Attribute:
+	state: Boolean
+	function pull(player)
+		Versuche einen Hebel umzulegen
+Callbacks:	
+	function canPull(player) -> Boolean
+		Legt fest, wenn ein Spieler einen Hebel umlegen darf.
+			(default: return true)
+		
+	function onPull(player)
+		Wird aufgerufen, wenn der Spieler einen Schalter erfolgreich umgelegt hat. 
+			(default: nichts tun)
+
+***** PressurePlate *****
+Beispiel für eine Druckplatte
+Erägnzt: Entity
+Attribute:
+	threshold: Float
+Methoden:
+	function computeWeight()
+Callbacks:
+	function onPressed()
+	function onReleased()
+
+***** Player *****
+Diese Klassen verwaltet einen Spieler.
+Attribute:
+	world: Die Welt in welcher der Spieler liebt
+	position: Position des Spielers
+Methoden:
+	function update();
+	
+	function move(direction)
+		Wird aufgerufen, falls der Spieler sich in eine Bewegung möchte.
+		Falls die Bewegung nicht möglich ist, wird die Bewegung nicht durchgeführt.
+		direction ist "left", "right", "up", "down" 
+	
+	function canMove(direction)
+		Prüft, ob eine Bewegung erlaubt sind.
+
+	function action(type)
+		Führt eine Aktion aus (z.B. Hebel umlegen)
+		type für den Fall, dass mehrere Aktionen möglich sind.
+		
+***** Grid *****
+Diese Klasse verwaltet alle festen Blöcke
+Attribute:
+	world: World
+	tiles: Array von Array von Tiles
+	size: Größe des Levels (Objekt mit Attributen size.x und size.y)
+Methoden:
+	function update()
+	
+***** World *****
+Diese Klasse verwaltet die komplette Spielwelt mit allen Objekten
+Attribute:
+	player: Array von Player
+	entities: Array von Entity
+	grid: Grid
+Methoden:
+	function update()
+
+***** Level *****
+In dieser Klasse wird ein Level einprogrammiert. 
+Methoden:
+	createWorld() -> World
+		Erstellt eine eingeprogrammiertes Level

@@ -1,0 +1,3 @@
+[submodule "panda.js-engine"]
+	path = panda.js-engine
+	url = https://github.com/ekelokorpi/panda.js-engine.git

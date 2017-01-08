@@ -1,0 +1,307 @@
+Zeichen:
+x:	Mauer
+ :	Freies Feld
+k:	Kiste
+A-J;P-W:Druckplatte
+a-j:	Tpren die nur dan offen sind, wenn min. 1 Druckplatte mit gleichen Buchstaben gedrückt ist.
+s:	Startposition
+z:	Zielposition
+p-w:	Portale, die nur offen sind, falls min. 1 Druckplatte mit gleichen Buchstaben gedrückt ist.
+â:	wie a, aber offen <=> a wäre nicht offen.
+
+@:      Ziel des Laserstrahls
+↓:      Lichtstrahl-emitter nach unten
+|:      Glaswand
+\, /:   Spiegel
+
+
+
+Tutorial: Spiegel (mehrspieler)
+xxxxxxxxxxxxxx
+xs ↓  |     sx
+x \  \| /  / x
+x     |      x
+x    \|    / x
+x    \|     @x
+x  /  | k  / x
+x     |\     x
+x     |      x
+x    \| /    x
+x     |      x
+x /   |    / x
+x     |      x
+xxxxxxxxxxxxxx
+
+
+Tutorial: Laufen
+xxxxxxx
+x sxz x
+x xxx x
+x x   x
+x   x x
+xxxxxxx
+
+Tutorial: Kisten
+ xxxx  
+xx  xx
+xsk zx
+xxx xx
+  xxx
+
+Tutorial:Bodenplatten&Türen
+xxxx
+x  x
+xk xxx
+xAsazx
+xxxxxx
+
+Turorial:mehrspieler
+xxx xxx
+xsx xsx
+xax xAx
+xBx xbx
+xzx xzx
+xxx xxx
+
+Tutorial:verneinte Türen
+xxxxxxxx
+xs a âzx 
+x xx xzx
+x kA xxx
+xxxxxx
+
+Tutorial Eis:
+xxxx
+x~ xxxx
+x~x~~~xx
+x x ~~zx
+x~~~~~xx
+xxxxxxx
+
+Leicht:
+xxxxxxxxxx
+x      ksx
+xx x x x x
+xxkkkkkkkx
+xa x x x x
+xxkkkkkkkx
+xx x x x x
+xA     z x
+xxxxxxxxxx
+
+
+Leicht:
+  xxxxxxxx
+  x k  s x
+  x k xkxx
+  x k x  x
+xxx xx   x
+xza  xxkxx
+xxx      Ax  
+  xxxxxxxx
+Mittel?:
+      xxxxx
+      xazzx
+    xxxbxxx
+    x  c  x
+xxxxx xxx xx
+xA  x k k sx
+xx  x  k  sx
+ xkkx k k  x
+ xC   xxxx xx
+ xxxx B c   x
+    xxxxxx  x
+         xxxx
+Leicht:
+   xxxxxxx
+   x~~~~~x
+   x~x~~xx
+ xxx~~~~~x
+ x~~~k~~~x
+xx~~~~~~~x
+xz~~~~~~~x
+xxs~~~x~~x
+ xxxxxxxxx
+
+Leicht doppal:
+xxxxx
+x a xx
+xbksax
+xAsx x
+xxaxAxxx
+ xBabzzx
+ xxxxxxx  
+
+Mitttel:
+gegenstände   Vereisung
+ xxxxxxxx     xxxxxxxx
+ x      x     x   ~~~x
+ xs     x     x   ~~~x
+xx   kkkx    xx   ~~~x
+xz a  A x    x    ~~~x
+xx   k  x    xx   ~~~x
+ x      x     x   ~~~x
+ xxxxxxxx     xxxxxxxx
+
+
+Mittel Doppel:
+  xxx     xxx
+  xzx     xzx
+xxxbxxx xxxbxxx
+x  c Ax x  a  x
+x k xâx xĉx k x
+xexE  x x  Cxĉx
+xs ĉ  x xAsê  x
+xxxxxxx xxxxxxx
+
+Mittel doppel:
+
+
+Mittel doppel:
+    xxx
+  xxxCx
+xxx   x
+x k1  x
+x AkB x
+x  xk x
+xx a  x
+x  xx2x
+xssxzzx
+xxxxxxx
+
+1=Tür, offen <=> a&&b gedrückt
+2=Tür, offen <=> a&&c gedrückt
+
+schwer:
+    xxxxx
+xxxxxabzx
+x   x xxx
+x s kA  x
+xx  x x x
+ x  a b x
+ x kxxxxx
+ x BAx
+ xxxxx
+
+Schwer Doppelspieler:
+ xxx xx
+xs  x px
+x q x  x
+x  Px kx
+ xxx   x
+x   xk xx
+x   x Axzx
+x pQxpsazx
+x   x  xx
+ xxx xx
+
+Schwer doppelspieler
+xxxxxx xxxxxxx
+xAsczx xzc   xxxx
+x  xxx xxxC  a  x
+xbxD x   xxaxx  x
+x    x   x   x  x
+xxxxxx   x k d  x
+         x   xxxx
+         xxxxx
+
+Schwer doppelspieler:
+Alles Vereist
+xxxxx
+x   xx
+x    xxx
+xx ss pxxx
+  x Ax azx
+  x x âxxx
+  xp k  x
+  xxxx  x
+     xxxx
+
+Schwer doppelspieler:
+  xxx      xxxxx
+xxxAxxx xxxxC  x
+x  k  x x    x x
+1  k2 x x k x Dxxx
+x  k  x xxks  bazx
+xxxBxxx x k xE x
+  xxx   x   xxxx
+        xxxxx
+
+1: Tür offen<=>e&&c
+2: Tür offen<=>d&&c
+
+Schwer doppelspieler:
+xxxx xxxx xxxx xxxx
+x  xxx  x xssxxx  x
+x       x x   q   x
+xx x x xx xx x x xx
+ x  p   x  xq p rx
+xx x x  x xx x x xx
+x  x xxxx x   r   x
+x x   xzx x  xxx  x
+x  A  azx xxxx xxxx
+xxxxxxxxx
+
+
+
+Verworfen
+xxxxxxxx
+xpskqxzx
+xxxs azx
+  xkk xx
+  x kkPx
+  xxkxxx
+   xqAkx
+   xxxxx
+   
+   
+   
+ Tutorial Sleepy
+ S=sleepy
+ s=sleepy's goal
+ N=normal player
+ n=normal player goal
+ 
+ xxxxxxxx
+ xS    Nx
+ x      x 
+ x      x
+ x     sx
+ xxxxxxxx
+ 
+ 
+ 
+ 
+ sleepy (easy)
+ S=sleepy
+ s=sleepy's goal
+ N=normal player
+ n=normal player goal
+ 
+    xxx   
+ xxxxpxxxx
+ xS    BAx
+ xxxxxxxxx
+ x b    nx
+ xaxxxxxxx
+ x      Nx
+ xxxxpxxxx
+    xxx 
+ 
+ 
+ another level with sleepy (note: door b starts open; B permanent pressure plate that closes door b)
+ S=sleepy
+ s=sleepy's goal
+ N=normal player
+ n=normal player goal
+ 
+  xxxxxxx   xxxxxxxx
+  xNx   x   xB    sx
+ xx xqxAx   xbxxxxxx
+ xr a   x   x     rx
+ xxxxxxxx   xxxqxxxx
+            xS     x 
+			xxxxxxxx
+			
+			
+   
