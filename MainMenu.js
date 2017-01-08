@@ -9,9 +9,9 @@ game.createScene('Main', {
         var background = new game.Sprite('background1').center().addTo(this.stage); 
         
         //Adding Text
-        var style = {font:'bold 30px sans-serif', fill: 'rgb(200, 0, 0)'};
+        var style = {font:'bold 30px sans-serif', fill: 'rgb(64, 128, 255)', stroke: 'rgb(0, 0, 64)', strokeThickness: 6};
         this.title = new game.Text('', style).addTo(this.stage);
-        this.title.x = 850; this.title.y = 700;
+        this.title.x = 100; this.title.y = 800;
         this.printLevel();
             
         //this.help = new game.Text('Use Arrow keys and ENTER', style).addTo(this.stage);
@@ -37,7 +37,7 @@ game.createScene('Main', {
 
     printLevel: function()
     {
-        this.title.setText('Level 1 to ' + levelNames.length + '\nSelected Level: ' + '\n'+ levelNames[this.levelSel]);
+        this.title.setText('Ausgewählter Level: ' + ' '+ levelNames[this.levelSel]);
     },
     
     runLevel: function()
