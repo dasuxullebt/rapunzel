@@ -28,8 +28,13 @@ with some exceptions: We use the font [Berry Rotunda][2], which is a
 public domain gothic font. We use [this][3] image of a scroll by the
 author [Endymian][4]. Furthermore, we use the [Panda.js][5] engine.
 
+# Play on github.io
+
+[https://dasuxullebt.github.io/rapunzel/index.html][6]
+
 [1]:https://www.cde-ev.de/
 [2]:http://www.dafont.com/berry-rotunda.font?l[]=10
 [3]:http://opengameart.org/content/burnt-scroll
 [4]:http://www.gamersuniversity.com/
 [5]:http://www.pandajs.net/
+[6]:https://dasuxullebt.github.io/rapunzel/index.html
