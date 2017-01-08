@@ -83,11 +83,24 @@ Display = function()
         this.camera.position.x += this.camera.velocity.x * game.system.delta;
         this.camera.position.y += this.camera.velocity.y * game.system.delta;
     }
+
+    this.sprites = {};
+
+    this.loadSprite = function (game, file) {
+	var q = this.sprites[file];
+	if (q != undefined) {
+	    //console.log("sprites[" + file + "] 2: " + this.sprites[file]);
+	    return q;
+	} else {
+	    this.sprites[file] = new game.Sprite(file);
+	    console.log("sprites[" + file + "]: " + this.sprites[file]);
+	    return this.sprites[file];
+	}
+    };
     
     this.update = function()
     {
         var typ = "";
-
 
         this.updateCamera();
         game.scene.clear();
@@ -97,39 +110,42 @@ Display = function()
         var textMessages = [];
         for (var k = 0; k < entities.length; k++)
         {
-            
-            if(this.world.entities[k].sprite != '')
-                file = this.world.entities[k].sprite;
-            else
-                file = entities[k].type.toLowerCase();
 
-            var pos = this.getEntityPosition(entities[k]);
-                
-			if(this.world.entities[k].type == 'TextMessage' && this.world.entities[k].isPressed)
-				textMessages.push(this.world.entities[k].message);
-            
-            var sprite = new game.Sprite(file,
-                pos.x - this.camera.position.x + game.system.originalWidth / 2 - 12,
-                pos.y - this.camera.position.y + game.system.originalHeight / 2 - 12).addTo(game.scene.stage);
+	    var sprite = this.loadSprite(game,
+		(this.world.entities[k].sprite != '') ?
+		    this.world.entities[k].sprite :
+		    entities[k].type.toLowerCase());
+	    
 
+	    var pos = this.getEntityPosition(entities[k]);
+
+	    sprite.x = pos.x - this.camera.position.x + game.system.originalWidth / 2 - 12;
+	    sprite.y = pos.y - this.camera.position.y + game.system.originalHeight / 2 - 12;
+	    
             //sprite.anchor.set(0.5, 0.5);
             sprite.width = this.tile_width * 1.26;
             sprite.height = this.tile_height * 1.26;
+
+	    sprite.addTo(game.scene.stage);
+
+	    if(this.world.entities[k].type == 'TextMessage' && this.world.entities[k].isPressed)
+		textMessages.push(this.world.entities[k].message);
+
         }
 
-		textMessages = textMessages.join("\n");
+	textMessages = textMessages.join("\n");
 
-		var textStyle = {font:'bold 60px sans-serif', fill: 'rgb(250, 200, 125)'};
-		text = new game.Text(textMessages, textStyle);
-		text.anchor.set(0.5, 0.5);
-		text.position.x = game.system.originalWidth / 2;
-		text.position.y = game.system.originalHeight / 2;
-		text.addTo(game.scene.stage);
+	var textStyle = {font:'bold 60px sans-serif', fill: 'rgb(250, 200, 125)'};
+	text = new game.Text(textMessages, textStyle);
+	text.anchor.set(0.5, 0.5);
+	text.position.x = game.system.originalWidth / 2;
+	text.position.y = game.system.originalHeight / 2;
+	text.addTo(game.scene.stage);
  
-		var levelNameStyle = {font:'bold 30px sans-serif', fill: 'rgb(192, 192, 192)'};
-		levelText = new game.Text("Level: " + this.world.levelName, levelNameStyle);
-		levelText.position.x = game.system.originalWidth / 2 - levelText.width / 2;
-		levelText.position.y = 10;
-		levelText.addTo(game.scene.stage);        
+	var levelNameStyle = {font:'bold 30px sans-serif', fill: 'rgb(192, 192, 192)'};
+	levelText = new game.Text("Level: " + this.world.levelName, levelNameStyle);
+	levelText.position.x = game.system.originalWidth / 2 - levelText.width / 2;
+	levelText.position.y = 10;
+	levelText.addTo(game.scene.stage);        
     };
 };
