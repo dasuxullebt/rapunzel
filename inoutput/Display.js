@@ -84,38 +84,37 @@ Display = function()
         this.camera.position.y += this.camera.velocity.y * game.system.delta;
     }
 
-    this.sprites = {};
+    text = levelText = null;
 
-    this.loadSprite = function (game, file) {
-	var q = this.sprites[file];
-	if (q != undefined) {
-	    //console.log("sprites[" + file + "] 2: " + this.sprites[file]);
-	    return q;
-	} else {
-	    this.sprites[file] = new game.Sprite(file);
-	    console.log("sprites[" + file + "]: " + this.sprites[file]);
-	    return this.sprites[file];
-	}
+    this.destroyStuff = function () {
+	if (text != null) text.destroy();
+	if (levelText != null) levelText.destroy();
     };
     
     this.update = function()
     {
         var typ = "";
 
+	this.destroyStuff();
         this.updateCamera();
         game.scene.clear();
         
         var entities = this.world.entities;
         entities.sort(function(x, y) {return x.zIndex < y.zIndex;});
         var textMessages = [];
-        for (var k = 0; k < entities.length; k++)
-        {
+        for (var k = 0; k < entities.length; ++k) {
+					 
+	    var file = (this.world.entities[k].sprite != '') ?
+		this.world.entities[k].sprite :
+		entities[k].type.toLowerCase();
 
-	    var sprite = this.loadSprite(game,
-		(this.world.entities[k].sprite != '') ?
-		    this.world.entities[k].sprite :
-		    entities[k].type.toLowerCase());
+	    var sprite;
 	    
+	    if (this.world.entities[k].sprites[file] != undefined) {
+		sprite = this.world.entities[k].sprites[file];
+	    } else {
+		sprite = this.world.entities[k].sprites[file] = new game.Sprite(file);
+	    }
 
 	    var pos = this.getEntityPosition(entities[k]);
 

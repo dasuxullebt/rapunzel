@@ -77,6 +77,7 @@ game.module('game.game').body(function() //this is Pandajs feature
             
             if (world.levelFinished)
             {
+		this.display.destroyStuff();
                 if (world.nextLevel)
                 {
                     levelName = world.nextLevel;

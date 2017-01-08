@@ -6,7 +6,8 @@ var Entity = function(world, tile, type)
     
     this.zIndex = 0;
     
-    
+    // workaround (rectal tonsillektomy)
+    this.sprites = new Array();
     
     // Die Kachel auf der das Entity liegt
     this.tile = tile;

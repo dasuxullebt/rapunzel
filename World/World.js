@@ -51,5 +51,16 @@ var World = function()
         for(var x = 0; x < this.grid.length; ++x)
             for(var y = 0; y < this.grid[x].length; ++y)
                 this.grid[x][y].update();
-    };          
+    };
+
+    this.destroySprites = function () {
+	for (var k = 0; k < this.entities.length; ++k) {
+	    for (var c in this.entities[k].sprites) {
+		console.log(c);
+		console.log(this.entities[k].sprites[c]);
+		this.entities[k].sprites[c].destroy();
+	    }
+	}
+    };
+
 };
