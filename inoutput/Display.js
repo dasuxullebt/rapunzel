@@ -11,7 +11,7 @@ Display = function()
         
         if (entity.animation.inAnimation )
         {
-            switch (entity.direction)
+            switch (entity.animation.direction)
             {
                 case Direction.RIGHT:
                     xOffset = entity.animation.animationProgress * this.tile_width;
@@ -41,17 +41,17 @@ Display = function()
             //target.y = Math.max(target.y, 300);
             //target.x = Math.min(target.x, this.world.size.x * tile_width - 300);
             //target.y = Math.min(target.y, this.world.size.y * tile_height - 300);
-			//return target;
-		// }
+                        //return target;
+                // }
     };
     
 
     this.init = function(world)
     {
-		
+                
         this.world = world;
-		var t = Math.min(Math.min(game.system.originalWidth / this.world.size.x,
-			game.system.originalHeight / this.world.size.y), 100);
+                var t = Math.min(Math.min(game.system.originalWidth / this.world.size.x,
+                        game.system.originalHeight / this.world.size.y), 100);
 
         this.tile_width = t;
         this.tile_height = t;
@@ -87,15 +87,15 @@ Display = function()
     text = levelText = null;
 
     this.destroyStuff = function () {
-	if (text != null) text.destroy();
-	if (levelText != null) levelText.destroy();
+        if (text != null) text.destroy();
+        if (levelText != null) levelText.destroy();
     };
     
     this.update = function()
     {
         var typ = "";
 
-	this.destroyStuff();
+        this.destroyStuff();
         this.updateCamera();
         game.scene.clear();
         
@@ -103,48 +103,48 @@ Display = function()
         entities.sort(function(x, y) {return x.zIndex < y.zIndex;});
         var textMessages = [];
         for (var k = 0; k < entities.length; ++k) {
-					 
-	    var file = (this.world.entities[k].sprite != '') ?
-		this.world.entities[k].sprite :
-		entities[k].type.toLowerCase();
+                                         
+            var file = (this.world.entities[k].sprite != '') ?
+                this.world.entities[k].sprite :
+                entities[k].type.toLowerCase();
 
-	    var sprite;
-	    
-	    if (this.world.entities[k].sprites[file] != undefined) {
-		sprite = this.world.entities[k].sprites[file];
-	    } else {
-		sprite = this.world.entities[k].sprites[file] = new game.Sprite(file);
-	    }
+            var sprite;
+            
+            if (this.world.entities[k].sprites[file] != undefined) {
+                sprite = this.world.entities[k].sprites[file];
+            } else {
+                sprite = this.world.entities[k].sprites[file] = new game.Sprite(file);
+            }
 
-	    var pos = this.getEntityPosition(entities[k]);
+            var pos = this.getEntityPosition(entities[k]);
 
-	    sprite.x = pos.x - this.camera.position.x + game.system.originalWidth / 2 - 12;
-	    sprite.y = pos.y - this.camera.position.y + game.system.originalHeight / 2 - 12;
-	    
+            sprite.x = pos.x - this.camera.position.x + game.system.originalWidth / 2 - 12;
+            sprite.y = pos.y - this.camera.position.y + game.system.originalHeight / 2 - 12;
+            
             //sprite.anchor.set(0.5, 0.5);
             sprite.width = this.tile_width * 1.26;
             sprite.height = this.tile_height * 1.26;
 
-	    sprite.addTo(game.scene.stage);
+            sprite.addTo(game.scene.stage);
 
-	    if(this.world.entities[k].type == 'TextMessage' && this.world.entities[k].isPressed)
-		textMessages.push(this.world.entities[k].message);
+            if(this.world.entities[k].type == 'TextMessage' && this.world.entities[k].isPressed)
+                textMessages.push(this.world.entities[k].message);
 
         }
 
-	textMessages = textMessages.join("\n");
+        textMessages = textMessages.join("\n");
 
-	var textStyle = {font:'bold 60px sans-serif', fill: 'rgb(250, 200, 125)'};
-	text = new game.Text(textMessages, textStyle);
-	text.anchor.set(0.5, 0.5);
-	text.position.x = game.system.originalWidth / 2;
-	text.position.y = game.system.originalHeight / 2;
-	text.addTo(game.scene.stage);
+        var textStyle = {font:'bold 60px sans-serif', fill: 'rgb(250, 200, 125)'};
+        text = new game.Text(textMessages, textStyle);
+        text.anchor.set(0.5, 0.5);
+        text.position.x = game.system.originalWidth / 2;
+        text.position.y = game.system.originalHeight / 2;
+        text.addTo(game.scene.stage);
  
-	var levelNameStyle = {font:'bold 30px sans-serif', fill: 'rgb(192, 192, 192)'};
-	levelText = new game.Text("Level: " + this.world.levelName, levelNameStyle);
-	levelText.position.x = game.system.originalWidth / 2 - levelText.width / 2;
-	levelText.position.y = 10;
-	levelText.addTo(game.scene.stage);        
+        var levelNameStyle = {font:'bold 30px sans-serif', fill: 'rgb(192, 192, 192)'};
+        levelText = new game.Text("Level: " + this.world.levelName, levelNameStyle);
+        levelText.position.x = game.system.originalWidth / 2 - levelText.width / 2;
+        levelText.position.y = 10;
+        levelText.addTo(game.scene.stage);        
     };
 };

@@ -42,21 +42,9 @@ var Portal = function (world, tile) {
     {
         if (direction != null && this.isEnabled && this.partner.isEnabled && this.partner.tile.isPlayerAllowedToEnterFrom(player, direction))
         {
-            for (var i = 0; i < player.tile.entities.length; i++)
-            {
-                if (player == player.tile.entities[i])
-                {
-                    player.tile.entities.splice(i,1);
-                }
-            }
-                        //console.log("player");
-            //console.log(player.tile.position);
-            player.tile.playerLeavesTile(player, null);
-            player.tile = this.partner.tile;
-            player.tile.playerEntersTile(player, null);
-            player.tile.entities.push(player);
-                        //console.log("player ");
-            //console.log(player.tile.position);
+            player.direction = null;
+            
+            player.moveToTile(this.partner.tile);
             
             if (player.type != 'Player1' && player.type != 'Player2' && player.type != 'Player')
             {
@@ -65,35 +53,33 @@ var Portal = function (world, tile) {
         }   
     };
 
-    this.onLeave = function (player, direction) {
-                if (this.isActivated)
-        {       this.isEnabled = true;
-                        for (var i = 0; i < this.tile.entities.length; i++)
-                        {
-                                if (player == this.tile.entities[i])
-                                {
-                                        this.tile.entities.splice(i,1);
-                                }
-                        }
-                        if (direction != null)
-                        {
-                                if (player.type != 'Player1' && player.type != 'Player2' && player.type != 'Player')
-                                {
-                                        neighbour = this.tile.getNeighbour(-direction);
-                                        console.log(neighbour);
-                                        for (i = 0; i < world.players.length; i++)
-                                        {
-                                                pusher = world.players[i];
-                                                //console.log(pusher.tile);
-                                                if (pusher.tile == this.tile)
-                                                {
-                                                        //console.log(pusher);
-                                                        this.onEnter(pusher, pusher.direction);
-                                                }
-                                        }
-                                }
-                        }
+    this.onLeave = function (player, direction) 
+    {
+        if (this.isActivated)
+        {       
+            this.isEnabled = true;
+            for (var i = 0; i < this.tile.entities.length; i++)
+            {
+                if (player == this.tile.entities[i])
+                {
+                    this.tile.entities.splice(i,1);
                 }
+            }
+            if (direction != null)
+            {
+                if (player.type != 'Player1' && player.type != 'Player2' && player.type != 'Player')
+                {
+                    for (i = 0; i < world.players.length; i++)
+                    {
+                        pusher = world.players[i];
+                        if (pusher.tile == this.tile)
+                        {
+                            this.onEnter(pusher, pusher.direction);
+                        }
+                    }
+                }
+            }
+        }
     };
         
     
@@ -101,22 +87,9 @@ var Portal = function (world, tile) {
     {
         if (type == "press" && this.isEnabled && this.partner.isEnabled && this.partner.tile.isPlayerAllowedToEnterFrom(player, null))
         {
-            for (var i = 0; i < player.tile.entities.length; i++)
-            {
-                if (player == player.tile.entities[i])
-                {
-                    player.tile.entities.splice(i,1);
-                }
-            }
+            player.direction = null;
             
-            
-            player.tile.playerLeavesTile(player, null);
-                        console.log(player.tile);
-            player.tile = this.partner.tile;
-                        player.animation.position = player.tile.position;
-                        console.log(player.tile);
-            player.tile.playerEntersTile(player, null);
-            player.tile.entities.push(player);
+            player.moveToTile(this.partner.tile);
         }
     }
 };

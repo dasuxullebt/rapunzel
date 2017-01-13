@@ -15,6 +15,7 @@ var Entity = function(world, tile, type)
     this.tile.entities.push(this);
     
     this.animation = new Animation(this.tile.position);
+    this.animation.isAnimated = false;
     
     // Der Entitytyp, z.B. Tür, Portal, Block
     this.type = type;
@@ -39,6 +40,35 @@ var Entity = function(world, tile, type)
     this.onEnter = function(player, directionFrom) {};
     // Wird aufgerufen, wenn ein Spieler ein Feld verlässt
     this.onLeave = function(player, directionTo) {};
+    
+    //Routine zum Wechsel des Feldes
+    this.moveToTile = function(tile)
+    {
+        this.tile.playerLeavesTile(this, this.direction);
+        
+                        
+        for (var i = 0; i < this.tile.entities.length;i++)
+        {
+            if(this.tile.entities[i]==this)
+            {
+                this.tile.entities.splice(i,1);
+            }
+        }
+        
+        if (this.animation.isAnimated && !this.animation.inAnimation)
+        {
+            this.animation.position = this.tile.position;
+            this.animation.startAnimation(this.direction);
+        }
+        
+        this.tile = tile;
+        
+        this.tile.entities.push(this);
+        
+        this.tile.playerEntersTile(this, this.direction);
+        
+    };
+    
     // Standardmäßig darf jedes Feld betreten werden
     this.isPlayerAllowedToEnterFrom = function(player, direction) {
         return true;

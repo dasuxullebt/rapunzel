@@ -1,7 +1,10 @@
 var BigBox = function(world, tile)
 {   
     Entity.call(this, world, tile, 'BigBox');
+    
     this.zIndex = -9;    
+    
+    this.animation.isAnimated = true;
     
     //TODO: Animation
     this.update = function()
@@ -16,13 +19,15 @@ var BigBox = function(world, tile)
         
     this.isPlayerAllowedToEnterFrom = function(player, direction)
     {
-		if (direction == null)
-			return false;
-		else if(this.tile.getNeighbour(direction)==null)
+        if (direction == null)
         {
             return false;
         }
-        else if(player.type == "BigBox")
+        else if(this.tile.getNeighbour(direction)==null)
+        {
+            return false;
+        }
+        else if(player.type == this.type)
         {
             return false;
         }
@@ -43,25 +48,9 @@ var BigBox = function(world, tile)
     this.pushTo = function(direction)
     {
         //verschiebe die Box:
-        for (var i = 0; i< this.tile.entities.length;i++)
-        {
-            if(this.tile.entities[i]==this)
-            {
-                this.tile.entities.splice(i,1);
-                break;
-            }
-        }   
         
-        this.tile.playerLeavesTile(this, direction);
-                
         this.direction = direction;
         
-        this.animation.startAnimation();
-        
-        this.tile=this.tile.getNeighbour(direction);
-		
-        this.tile.entities.push(this);
-		
-        this.tile.playerEntersTile(this, direction);
+        this.moveToTile(this.tile.getNeighbour(direction));
     }
 };

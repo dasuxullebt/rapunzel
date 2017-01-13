@@ -6,6 +6,8 @@ var Player = function(world, tile, direction, name = 'Player1')
     
     this.zIndex = -10;
     
+    this.animation.isAnimated = true;
+    
     this.isPlayerAllowedToEnterFrom = function(player,direction)
     {
         return false;
@@ -32,20 +34,7 @@ var Player = function(world, tile, direction, name = 'Player1')
                         
             if(this.canMove(direction))
             {   
-                this.tile.playerLeavesTile(this, direction);
-                                
-                for (var i = 0; i < this.tile.entities.length;i++)
-                {
-                    if(this.tile.entities[i]==this)
-                    {
-                        this.tile.entities.splice(i,1);
-                    }
-                }
-                                
-                this.tile = this.tile.getNeighbour(this.direction);   
-                this.animation.startAnimation();
-                this.tile.entities.push(this);
-                this.tile.playerEntersTile(this, this.direction);
+                this.moveToTile(this.tile.getNeighbour(this.direction));
             }
         }
         else {console.log("Entity still in animation");}
