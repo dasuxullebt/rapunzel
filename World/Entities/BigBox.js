@@ -19,7 +19,7 @@ var BigBox = function(world, tile)
         
     this.isPlayerAllowedToEnterFrom = function(player, direction)
     {
-        if (direction == null)
+        if (direction == null || this.animation.inAnimation)
         {
             return false;
         }
