@@ -17,7 +17,14 @@ var Player = function(world, tile, direction, name = 'Player1')
     {
         return this.tile.isPlayerAllowedToLeaveTo(this, direction);
     };
-
+    
+    this.kill = function()
+    {
+        world.gameOver = true;
+        this.sprite = "Player_Dead";
+        world.didEntitiesChange = true;
+    };
+    
     this.move = function(direction)
     {
         if ( world.gameOver )

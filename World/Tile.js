@@ -20,8 +20,8 @@ Tile = function(world, position)
         }
         return false;
     };
-		
-		this.getEntityByType = function(type)
+        
+    this.getEntityByType = function(type)
     {
         for (var i = 0; i < this.entities.length; i++)
         {
@@ -30,6 +30,15 @@ Tile = function(world, position)
         }
         return null;
     };
+    
+    this.getPlayerOnTile = function()
+    {
+        // search for a player on this tile
+        for (var j = 0; j < world.players.length; j++ )
+            if (world.players[j].tile == this )
+                return world.players[j];
+        return undefined;
+    }
     
     this.getActions = function(player)
     {
