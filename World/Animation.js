@@ -17,6 +17,8 @@ var Animation = function(position, animationStep = 5)
             if (this.progress >= this.limit)
             {
                 this.progress = 1;
+                this.limit = 1;
+                
                 this.inAnimation = false;
                 
                 this.position = parent.tile.position;

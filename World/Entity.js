@@ -61,10 +61,13 @@ var Entity = function(world, tile, type)
             }
         }
         
-        if (this.animation.isAnimated && !this.animation.inAnimation)
+        if (this.animation.isAnimated)
         {
-            this.animation.position = this.tile.position;
-            this.animation.startAnimation(this.direction);
+            if (!this.animation.inAnimation)
+            {
+                this.animation.position = this.tile.position;
+                this.animation.startAnimation(this.direction);
+            }
         }
         
         this.tile = tile;

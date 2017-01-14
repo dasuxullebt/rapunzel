@@ -29,11 +29,8 @@ var Ice=function(world,tile)
         {
             if(this.tile.getNeighbour(direction).isPlayerAllowedToEnterFrom(direction))//=if(keine der Entities ist eine Große Box ist)
             {
+                player.animation.limit++;
                 player.moveToTile(this.tile.getNeighbour(direction));
-            }
-            else
-            {
-                  
             }
         }               
 
