@@ -3,8 +3,9 @@ var Animation = function(position, animationStep = 5)
     // this.animationType = 0;
     this.isAnimated = true;
     this.inAnimation = false;
-    this.animationProgress = 1;
-    this.animationStep = animationStep;
+    this.limit = 1;
+    this.progress = this.limit;
+    this.step = animationStep;
     this.position = position;
     this.direction;
     
@@ -12,10 +13,10 @@ var Animation = function(position, animationStep = 5)
     {
         if (this.inAnimation)
         {
-            this.animationProgress += game.system.delta * this.animationStep;
-            if (this.animationProgress >= 1)
+            this.progress += game.system.delta * this.step;
+            if (this.progress >= this.limit)
             {
-                this.animationProgress = 1;
+                this.progress = 1;
                 this.inAnimation = false;
                 
                 this.position = parent.tile.position;
@@ -31,7 +32,7 @@ var Animation = function(position, animationStep = 5)
         {
             this.inAnimation = true;
             this.direction = direction;
-            this.animationProgress = 0;
+            this.progress = 0;
         }
     }
 }

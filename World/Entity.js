@@ -28,12 +28,18 @@ var Entity = function(world, tile, type)
     
     // Sprite für das Entity für die Ausgabe
     this.sprite = type;
+    this.opacity = 1;
+    
     // Kann dieses Entity vom Spieler aktiviert werden?
     this.isEnabled = true;
      // Kann dieses Entity verschoben werden?
     this.isPushable = false;
     // Wird aufgerufen, wenn ein neues Frame berechnet wird
-    this.update = function() {};
+    this.update = function() 
+    {
+        if (this.animation.isAnimated)
+            this.animation.update(this);
+    };
     // Wird aufgerufen, wenn eine Aktion bei dieser Entity ausgeführt werden soll
     this.doAction = function(player, type) {};
     // Wird aufgerufen, wenn ein Spieler ein Feld betritt

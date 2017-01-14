@@ -12,11 +12,6 @@ var Player = function(world, tile, direction, name = 'Player1')
     {
         return false;
     }
-    
-    this.update = function()
-    {   
-        this.animation.update(this);
-    };
 
     this.canMove = function(direction)
     {

@@ -14,16 +14,16 @@ Display = function()
             switch (entity.animation.direction)
             {
                 case Direction.RIGHT:
-                    xOffset = entity.animation.animationProgress * this.tile_width;
+                    xOffset = entity.animation.progress * this.tile_width;
                     break;
                 case Direction.LEFT:
-                    xOffset = - entity.animation.animationProgress * this.tile_width;
+                    xOffset = - entity.animation.progress * this.tile_width;
                     break;
                 case Direction.UP:
-                    yOffset = - entity.animation.animationProgress * this.tile_height;
+                    yOffset = - entity.animation.progress * this.tile_height;
                     break;
                 case Direction.DOWN:
-                    yOffset = entity.animation.animationProgress * this.tile_height;
+                    yOffset = entity.animation.progress * this.tile_height;
                     break;
             }
         }
@@ -124,6 +124,8 @@ Display = function()
             //sprite.anchor.set(0.5, 0.5);
             sprite.width = this.tile_width * 1.26;
             sprite.height = this.tile_height * 1.26;
+            
+            sprite.alpha = entities[k].opacity;
 
             sprite.addTo(game.scene.stage);
 
