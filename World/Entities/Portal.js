@@ -58,13 +58,7 @@ var Portal = function (world, tile) {
         if (this.isActivated)
         {       
             this.isEnabled = true;
-            for (var i = 0; i < this.tile.entities.length; i++)
-            {
-                if (player == this.tile.entities[i])
-                {
-                    this.tile.entities.splice(i,1);
-                }
-            }
+            
             if (direction != null)
             {
                 if (player.type != 'Player1' && player.type != 'Player2' && player.type != 'Player')
