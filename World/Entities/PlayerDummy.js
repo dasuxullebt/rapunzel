@@ -13,6 +13,8 @@ var PlayerDummy = function(world, tile)
     this.update = function()
     {
         this.animation.update(this);
+        
+        this.opacity = 1 - this.animation.progress;
         if (!this.animation.inAnimation)
         {
             for (var i = 0; i < this.tile.entities.length; i++)
