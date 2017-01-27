@@ -56,7 +56,7 @@ addLevel("stephanDoppel5",
             };
             world.getEntityByName("plate4").onStatusChange = function ()
             {
-				if (this.isPressed && world.getEntityByName("plate5").isPressed) {
+                if (this.isPressed && world.getEntityByName("plate5").isPressed) {
                     world.getEntityByName("door4").open();
                 } else {
                     world.getEntityByName("door4").close();
@@ -76,5 +76,6 @@ addLevel("stephanDoppel5",
                 }
             };
         }
-    }
+    },
+    "mittelDoppel"
 );

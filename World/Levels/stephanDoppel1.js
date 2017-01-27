@@ -67,5 +67,5 @@ addLevel("stephanDoppel1",
             };
         }
     },
-    "stephanDoppel1"
+    "stephanDoppel2"
 );
